@@ -1,0 +1,278 @@
+/* ==UserStyle==
+@name           23/06/2022, 13:07:46
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+@preprocessor   stylus
+
+@var select theme "Theme" ["Latte", "Frappe", "Macchiato", "Mocha*"]
+==/UserStyle== */
+
+@-moz-document url-prefix("file:///home/umbreon/Projects/Kitty/index.html") {
+    colors = "rosewater" "flamingo" "pink" "mauve" "red" "maroon" "peach" "yellow" "green" "teal" "sky" "sapphire" "blue" "lavender"
+    
+    if (theme=="Latte") {
+        $type = light
+        
+        $rosewater = #dc8a78
+        $flamingo = #dd7878
+        $pink = #ea76cb
+        $mauve = #8839ef
+        $red = #d20f39
+        $maroon = #e64553
+        $peach = #fe640b
+        $yellow = #df8e1d
+        $green = #40a02b
+        $teal = #179299
+        $sky = #04a5e5
+        $sapphire = #209fb5
+        $blue = #1e66f5
+        $lavender = #7287fd
+        $text = #4c4f69
+        $subtext1 = #5c5f77
+        $subtext0 = #6c6f85
+        $overlay2 = #7c7f93
+        $overlay1 = #8c8fa1
+        $overlay0 = #9ca0b0
+        $surface2 = #acb0be
+        $surface1 = #bcc0cc
+        $surface0 = #ccd0da
+        $base = #eff1f5
+        $mantle = #e6e9ef
+        $crust = #dce0e8
+    }
+    else if (theme=="Frappe") {
+        $type = dark
+        
+        $rosewater = #f2d5cf
+        $flamingo = #eebebe
+        $pink = #f4b8e4
+        $mauve = #ca9ee6
+        $red = #e78284
+        $maroon = #ea999c
+        $peach = #ef9f76
+        $yellow = #e5c890
+        $green = #a6d189
+        $teal = #81c8be
+        $sky = #99d1db
+        $sapphire = #85c1dc
+        $blue = #8caaee
+        $lavender = #babbf1
+        $text = #c6d0f5
+        $subtext1 = #b5bfe2
+        $subtext0 = #a5adce
+        $overlay2 = #949cbb
+        $overlay1 = #838ba7
+        $overlay0 = #737994
+        $surface2 = #626880
+        $surface1 = #51576d
+        $surface0 = #414559
+        $base = #303446
+        $mantle = #292c3c
+        $crust = #232634
+    }
+    else if (theme=="Macchiato") {
+        $type = dark
+        
+        $rosewater = #f4dbd6
+        $flamingo = #f0c6c6
+        $pink = #f5bde6
+        $mauve = #c6a0f6
+        $red = #ed8796
+        $maroon = #ee99a0
+        $peach = #f5a97f
+        $yellow = #eed49f
+        $green = #a6da95
+        $teal = #8bd5ca
+        $sky = #91d7e3
+        $sapphire = #7dc4e4
+        $blue = #8aadf4
+        $lavender = #b7bdf8
+        $text = #cad3f5
+        $subtext1 = #b8c0e0
+        $subtext0 = #a5adcb
+        $overlay2 = #939ab7
+        $overlay1 = #8087a2
+        $overlay0 = #6e738d
+        $surface2 = #5b6078
+        $surface1 = #494d64
+        $surface0 = #363a4f
+        $base = #24273a
+        $mantle = #1e2030
+        $crust = #181926
+    }
+    else if (theme=="Mocha") {
+        $type = dark
+    
+        $rosewater = hsl(10, 56%, 91%)
+        $flamingo = hsl(0, 59%, 88%)
+        $pink = hsl(316, 72%, 86%)
+        $mauve = hsl(267, 84%, 81%)
+        $red = hsl(343, 81%, 75%)
+        $maroon = hsl(350, 65%, 77%)
+        $peach = hsl(23, 92%, 75%)
+        $yellow = hsl(41, 86%, 83%)
+        $green = hsl(115, 54%, 76%)
+        $teal = hsl(170, 57%, 73%)
+        $sky = hsl(189, 71%, 73%)
+        $sapphire = hsl(199, 76%, 69%)
+        $blue = hsl(217, 92%, 76%)
+        $lavender = hsl(232, 97%, 85%)
+        $text = hsl(226, 64%, 88%)
+        $subtext1 = hsl(227, 35%, 80%)
+        $subtext0 = hsl(228, 24%, 72%)
+        $overlay2 = hsl(228, 17%, 64%)
+        $overlay1 = hsl(230, 13%, 55%)
+        $overlay0 = hsl(231, 11%, 47%)
+        $surface2 = hsl(233, 12%, 39%)
+        $surface1 = hsl(234, 13%, 31%)
+        $surface0 = hsl(237, 16%, 23%)
+        $base = hsl(240, 21%, 15%)
+        $mantle = hsl(240, 21%, 12%)
+        $crust = hsl(240, 23%, 9%)
+    }
+    
+    /* Functions */
+    hoverColor(col) {
+        return blend(alpha(col, 0.7), $text)
+    }
+
+    activeColor(col) {
+        return blend(alpha(col, 0.5), $text)
+    }
+    
+    disabledColor(col) {
+        return blend(alpha(col, 0.4), $base)
+    }
+    
+    /* Page */
+    :root {
+        background-color: $base
+        color: $text
+        font-family: Inter
+        font-size: 16px
+        text-align: center;
+        padding: 1.5em
+        accent-color: $rosewater;
+    }
+    ::selection {
+        color: $text
+        background-color: $surface2
+    }
+    
+    /* Headers */
+    h1 {
+        font-size: 40px
+        color: $subtext1
+    }
+    $headers = 30px 24px 20px 18px 16px
+    for size, i in $headers {
+        h{i+2} {
+            font-size: size
+            color: $subtext0
+        }
+    }
+    
+    /* Links */.button
+    a {
+        color: $rosewater
+        &:not(.button):not(.tag):hover {
+            color: hoverColor($rosewater)
+        }
+        &:not(.button):not(.tag):active,&:not(.button):not(.tag):focus {
+            color: activeColor($rosewater)
+        }
+    }
+    
+    /* Buttons */
+    button,
+    .button{
+         /* Button variables */
+        --fg: $text
+        --fg-disabled: $subtext0
+        --bg: $overlay0
+        --bg-hover: $overlay1
+        --bg-active: $overlay2
+        --bg-disabled: disabledColor($overlay0)
+             
+        /* Default */
+        color: var(--fg)
+        background-color: var(--bg)
+        cursor: pointer
+        border-radius: 0.3rem
+        padding: 4px 12px
+        transition-duration: 0.1s
+        
+        /* Outline button */
+        &.outline {
+            --bg: $text
+            --bg-hover: hoverColor($text)
+            --bg-active: activeColor($text)
+            --bg-disabled: disabledColor($text)
+            
+            background: transparent
+            color: var(--bg)
+            border: 1px solid var(--bg)
+            padding: 4px 11px
+            
+            &.disabled {
+                --bg: var(--bg-disabled)
+            }
+        }
+        
+        /* Button colors */
+        for i, _ in colors {
+            $col = lookup("$" + i)
+            &.{i} {
+                --fg: $base
+                --fg-disabled: $crust
+                --bg: $col
+                --bg-hover: hoverColor($col)
+                --bg-active: activeColor($col)
+                --bg-disabled: disabledColor($col)
+            }
+        }
+        
+        /* Pseudo classes */
+        &:hover {
+            --bg: var(--bg-hover)
+        }
+        &:active {
+            --bg: var(--bg-active)
+        }
+        &.disabled {
+            --fg: var(--fg-disabled)
+            --bg: var(--bg-disabled)
+            pointer-events: none
+        }
+    }
+    
+    /* Tags */
+    .tag {
+        color: $blue
+        background: alpha($blue, 0.2)
+        padding: 4px 10px
+        cursor: pointer
+        transition-duration: 0.1s
+        font-size: 12px
+        
+        border-radius: 1em
+        
+        &:hover {
+            background: $blue
+            color: $base
+        }
+    }
+    
+    /* Boxes */
+    .box {
+        padding: 1.5em
+        margin-top: 1em
+        border-radius: 10px
+        background-color: $mantle
+    }
+    .box .box {
+        background-color: $crust
+    }
+}
