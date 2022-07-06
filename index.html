@@ -1,0 +1,546 @@
+<html>
+
+<head>
+    <style>/*
+        1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+        2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+        */
+        
+        *,
+        ::before,
+        ::after {
+          box-sizing: border-box; /* 1 */
+          border-width: 0; /* 2 */
+          border-style: solid; /* 2 */
+          border-color: theme('borderColor.DEFAULT', currentColor); /* 2 */
+        }
+        
+        ::before,
+        ::after {
+          --tw-content: '';
+        }
+        
+        /*
+        1. Use a consistent sensible line-height in all browsers.
+        2. Prevent adjustments of font size after orientation changes in iOS.
+        3. Use a more readable tab size.
+        4. Use the user's configured `sans` font-family by default.
+        */
+        
+        html {
+          line-height: 1.5; /* 1 */
+          -webkit-text-size-adjust: 100%; /* 2 */
+          -moz-tab-size: 4; /* 3 */
+          tab-size: 4; /* 3 */
+          font-family: theme('fontFamily.sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"); /* 4 */
+        }
+        
+        /*
+        1. Remove the margin in all browsers.
+        2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+        */
+        
+        body {
+          margin: 0; /* 1 */
+          line-height: inherit; /* 2 */
+        }
+        
+        /*
+        1. Add the correct height in Firefox.
+        2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+        3. Ensure horizontal rules are visible by default.
+        */
+        
+        hr {
+          height: 0; /* 1 */
+          color: inherit; /* 2 */
+          border-top-width: 1px; /* 3 */
+        }
+        
+        /*
+        Add the correct text decoration in Chrome, Edge, and Safari.
+        */
+        
+        abbr:where([title]) {
+          text-decoration: underline dotted;
+        }
+        
+        /*
+        Remove the default font size and weight for headings.
+        */
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-size: inherit;
+          font-weight: inherit;
+        }
+        
+        /*
+        Reset links to optimize for opt-in styling instead of opt-out.
+        */
+        
+        a {
+          color: inherit;
+          text-decoration: inherit;
+        }
+        
+        /*
+        Add the correct font weight in Edge and Safari.
+        */
+        
+        b,
+        strong {
+          font-weight: bolder;
+        }
+        
+        /*
+        1. Use the user's configured `mono` font family by default.
+        2. Correct the odd `em` font sizing in all browsers.
+        */
+        
+        code,
+        kbd,
+        samp,
+        pre {
+          font-family: theme('fontFamily.mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace); /* 1 */
+          font-size: 1em; /* 2 */
+        }
+        
+        /*
+        Add the correct font size in all browsers.
+        */
+        
+        small {
+          font-size: 80%;
+        }
+        
+        /*
+        Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+        */
+        
+        sub,
+        sup {
+          font-size: 75%;
+          line-height: 0;
+          position: relative;
+          vertical-align: baseline;
+        }
+        
+        sub {
+          bottom: -0.25em;
+        }
+        
+        sup {
+          top: -0.5em;
+        }
+        
+        /*
+        1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+        2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+        3. Remove gaps between table borders by default.
+        */
+        
+        table {
+          text-indent: 0; /* 1 */
+          border-color: inherit; /* 2 */
+          border-collapse: collapse; /* 3 */
+        }
+        
+        /*
+        1. Change the font styles in all browsers.
+        2. Remove the margin in Firefox and Safari.
+        3. Remove default padding in all browsers.
+        */
+        
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+          font-family: inherit; /* 1 */
+          font-size: 100%; /* 1 */
+          font-weight: inherit; /* 1 */
+          line-height: inherit; /* 1 */
+          color: inherit; /* 1 */
+          margin: 0; /* 2 */
+          padding: 0; /* 3 */
+        }
+        
+        /*
+        Remove the inheritance of text transform in Edge and Firefox.
+        */
+        
+        button,
+        select {
+          text-transform: none;
+        }
+        
+        /*
+        1. Correct the inability to style clickable types in iOS and Safari.
+        2. Remove default button styles.
+        */
+        
+        button,
+        [type='button'],
+        [type='reset'],
+        [type='submit'] {
+          -webkit-appearance: button; /* 1 */
+          background-color: transparent; /* 2 */
+          background-image: none; /* 2 */
+        }
+        
+        /*
+        Use the modern Firefox focus style for all focusable elements.
+        */
+        
+        :-moz-focusring {
+          outline: auto;
+        }
+        
+        /*
+        Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+        */
+        
+        :-moz-ui-invalid {
+          box-shadow: none;
+        }
+        
+        /*
+        Add the correct vertical alignment in Chrome and Firefox.
+        */
+        
+        progress {
+          vertical-align: baseline;
+        }
+        
+        /*
+        Correct the cursor style of increment and decrement buttons in Safari.
+        */
+        
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+          height: auto;
+        }
+        
+        /*
+        1. Correct the odd appearance in Chrome and Safari.
+        2. Correct the outline style in Safari.
+        */
+        
+        [type='search'] {
+          -webkit-appearance: textfield; /* 1 */
+          outline-offset: -2px; /* 2 */
+        }
+        
+        /*
+        Remove the inner padding in Chrome and Safari on macOS.
+        */
+        
+        ::-webkit-search-decoration {
+          -webkit-appearance: none;
+        }
+        
+        /*
+        1. Correct the inability to style clickable types in iOS and Safari.
+        2. Change font properties to `inherit` in Safari.
+        */
+        
+        ::-webkit-file-upload-button {
+          -webkit-appearance: button; /* 1 */
+          font: inherit; /* 2 */
+        }
+        
+        /*
+        Add the correct display in Chrome and Safari.
+        */
+        
+        summary {
+          display: list-item;
+        }
+        
+        /*
+        Removes the default spacing and border for appropriate elements.
+        */
+        
+        blockquote,
+        dl,
+        dd,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        figure,
+        p,
+        pre {
+          margin: 0;
+        }
+        
+        fieldset {
+          margin: 0;
+          padding: 0;
+        }
+        
+        legend {
+          padding: 0;
+        }
+        
+        ol,
+        ul,
+        menu {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        
+        /*
+        Prevent resizing textareas horizontally by default.
+        */
+        
+        textarea {
+          resize: vertical;
+        }
+        
+        /*
+        1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+        2. Set the default placeholder color to the user's configured gray 400 color.
+        */
+        
+        input::placeholder,
+        textarea::placeholder {
+          opacity: 1; /* 1 */
+          color: theme('colors.gray.400', #9ca3af); /* 2 */
+        }
+        
+        /*
+        Set the default cursor for buttons.
+        */
+        
+        button,
+        [role="button"] {
+          cursor: pointer;
+        }
+        
+        /*
+        Make sure disabled buttons don't get the pointer cursor.
+        */
+        :disabled {
+          cursor: default;
+        }
+        
+        /*
+        1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+        2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+           This can trigger a poorly considered lint error in some tools but is included by design.
+        */
+        
+        img,
+        svg,
+        video,
+        canvas,
+        audio,
+        iframe,
+        embed,
+        object {
+          display: block; /* 1 */
+          vertical-align: middle; /* 2 */
+        }
+        
+        /*
+        Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+        */
+        
+        img,
+        video {
+          max-width: 100%;
+          height: auto;
+        }
+        </style>
+</head>
+
+<body>
+    <h1>Catppuccin</h1>
+
+    <hr>
+    <h2>Boxes</h2>
+    <div class="box">
+        Wow this is a box... You are unsure of the fate of the cat until you open it
+        <div class="box">
+            This is a box within a box... You are unsure of the fate of the box that contains the cat until you open it
+            <br>
+            <button class="button">Open the box</button>
+        </div>
+    </div>
+
+    <hr>
+    <h2>Buttons</h2>
+    <h3>Default</h3>
+    <button>Default</button>
+    <button class="rosewater">rosewater</button>
+    <button class="flamingo">flamingo</button>
+    <button class="pink">pink</button>
+    <button class="mauve">mauve</button>
+    <button class="red">red</button>
+    <button class="maroon">maroon</button>
+    <button class="peach">peach</button>
+    <button class="yellow">yellow</button>
+    <button class="green">green</button>
+    <button class="teal">teal</button>
+    <button class="sky">sky</button>
+    <button class="sapphire">sapphire</button>
+    <button class="blue">blue</button>
+    <button class="lavender">lavender</button>
+
+    <h3>Default Disabled</h3>
+    <button class="disabled">Default</button>
+    <button class="rosewater disabled">rosewater</button>
+    <button class="flamingo disabled">flamingo</button>
+    <button class="pink disabled">pink</button>
+    <button class="mauve disabled">mauve</button>
+    <button class="red disabled">red</button>
+    <button class="maroon disabled">maroon</button>
+    <button class="peach disabled">peach</button>
+    <button class="yellow disabled">yellow</button>
+    <button class="green disabled">green</button>
+    <button class="teal disabled">teal</button>
+    <button class="sky disabled">sky</button>
+    <button class="sapphire disabled">sapphire</button>
+    <button class="blue disabled">blue</button>
+    <button class="lavender disabled">lavender</button>
+
+    <h3>Outline</h3>
+    <button class="outline">Default</button>
+    <button class="outline rosewater">rosewater</button>
+    <button class="outline flamingo">flamingo</button>
+    <button class="outline pink">pink</button>
+    <button class="outline mauve">mauve</button>
+    <button class="outline red">red</button>
+    <button class="outline maroon">maroon</button>
+    <button class="outline peach">peach</button>
+    <button class="outline yellow">yellow</button>
+    <button class="outline green">green</button>
+    <button class="outline teal">teal</button>
+    <button class="outline sky">sky</button>
+    <button class="outline sapphire">sapphire</button>
+    <button class="outline blue">blue</button>
+    <button class="outline lavender">lavender</button>
+
+    <h3>Outline Disabled</h3>
+    <button class="outline disabled">Default</button>
+    <button class="outline rosewater disabled">rosewater</button>
+    <button class="outline flamingo disabled">flamingo</button>
+    <button class="outline pink disabled">pink</button>
+    <button class="outline mauve disabled">mauve</button>
+    <button class="outline red disabled">red</button>
+    <button class="outline maroon disabled">maroon</button>
+    <button class="outline peach disabled">peach</button>
+    <button class="outline yellow disabled">yellow</button>
+    <button class="outline green disabled">green</button>
+    <button class="outline teal disabled">teal</button>
+    <button class="outline sky disabled">sky</button>
+    <button class="outline sapphire disabled">sapphire</button>
+    <button class="outline blue disabled">blue</button>
+    <button class="outline lavender disabled">lavender</button>
+
+    <hr>
+    <h2>Paragraph</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et justo turpis. Vivamus eget lorem nec lorem
+        consequat rutrum in nec leo. <a href="">Ut consequat varius erat</a>. Aenean eu sem condimentum, gravida sapien non, imperdiet
+        massa. Pellentesque convallis diam non est finibus elementum. Proin hendrerit magna egestas, congue mauris vel,
+        molestie quam. Fusce ullamcorper erat nec consectetur hendrerit. Donec sed sagittis diam. Quisque malesuada
+        tortor nulla, a tempor elit pharetra eu. Fusce vehicula erat vitae nisl gravida, id efficitur arcu iaculis.
+        Quisque maximus, nisl a gravida tempus, risus elit porttitor sapien, vitae consequat magna urna quis elit. Donec
+        porta massa diam, vel consectetur mauris vehicula eget.
+    </p>
+    <p>
+        Vestibulum mattis, urna sit amet egestas tempus, tortor ante ornare lorem, lobortis euismod nulla ligula sit
+        amet nulla. Vestibulum ut lorem lacinia, rhoncus est a, euismod justo. Etiam rhoncus suscipit lectus, ac
+        facilisis ante auctor in. <a href="">Suspendisse quis</a> dapibus mi, ut semper justo. In hac habitasse platea dictumst. Nunc
+        dui arcu, ornare quis maximus vel, auctor id tortor. Mauris ultrices, diam non commodo varius, est massa tempor
+        dui, non auctor nibh neque ut diam. Vestibulum commodo egestas consectetur. Sed sapien ex, tincidunt eu libero
+        a, porttitor finibus purus. Vivamus interdum lorem vitae neque porttitor semper. Suspendisse laoreet, justo nec
+        vulputate fringilla, diam metus commodo ligula, id posuere orci dui molestie purus. Nam ac lectus et quam porta
+        semper porttitor non orci. Proin accumsan nisl gravida tellus consequat, a luctus sem faucibus.
+    </p>
+
+    <hr>
+    <h2>Tags</h2>
+    <a class="tag">Theme</a>
+    <a class="tag">Catppuccin</a>
+    <a class="tag">Cat</a>
+    <a class="tag">Pastel</a>
+
+    <hr>
+    <h2>Headers</h2>
+    <h1>Header1</h1>
+    <h2>Header2</h2>
+    <h3>Header3</h3>
+    <h4>Header4</h4>
+    <h5>Header5</h5>
+    <h6>Header6</h6>
+
+    <hr>
+    <h2>Inputs</h2>
+    <h3>Checkbox</h3>
+    <input type="checkbox" name="a" checked>
+    <input type="checkbox" name="a">
+    <input type="checkbox" name="b" disabled>
+    <input type="checkbox" name="b" disabled checked>
+    <input type="radio" name="c" checked>
+    <input type="radio" name="c">
+    <input type="radio" name="d" disabled>
+    <input type="radio" name="d" disabled checked>
+
+    <hr>
+    <h2>Selection boxes</h2>
+    <select id="select" class="button" style="border-color: transparent">
+        <option value=>default</option>
+        <option value=rosewater>rosewater</option>
+        <option value=flamingo>flamingo</option>
+        <option value=pink>pink</option>
+        <option value=mauve>mauve</option>
+        <option value=red>red</option>
+        <option value=maroon>maroon</option>
+        <option value=peach>peach</option>
+        <option value=yellow>yellow</option>
+        <option value=green>green</option>
+        <option value=teal>teal</option>
+        <option value=sky>sky</option>
+        <option value=sapphire>sapphire</option>
+        <option value=blue>blue</option>
+        <option value=lavender>lavender</option>
+    </select>
+    <select id="select3" class="button disabled" style="border-color: transparent">
+        <option value=1>Option 1</option>
+        <option value=2>Option 2</option>
+    </select>
+    <select id="select2" id="select2" class="button outline">
+        <option value=1>Option 1</option>
+        <option value=2>Option 2</option>
+    </select>
+    <select id="select4" class="button disabled outline">
+        <option value=1>Option 1</option>
+        <option value=2>Option 2</option>
+    </select>
+    <script>
+        const select = document.getElementById("select")
+        const select2 = document.getElementById("select2")
+        const select3 = document.getElementById("select3")
+        const select4 = document.getElementById("select4")
+        select.onchange = function(a,b,c) {
+            select.className = "button "+select.value
+            select2.className = "button outline "+select.value
+            select3.className = "button disabled "+select.value
+            select4.className = "button disabled outline "+select.value
+        }
+    </script>
+</body>
+
+</html>
